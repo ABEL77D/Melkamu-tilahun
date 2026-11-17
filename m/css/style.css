@@ -1,0 +1,1417 @@
+/* =====================================
+   1. ROOT VARIABLES
+===================================== */
+
+:root {
+
+    --green: #8bc34a;
+    --dark-green: #4f852d;
+    --deep-green: #203d25;
+
+    --white: #ffffff;
+    --light-bg: #f5f9f2;
+
+    --text: #26352a;
+    --gray: #69766c;
+
+    --border: #e5ebe2;
+
+    --shadow: 0 10px 35px rgba(0,0,0,0.06);
+
+    --transition: .3s ease;
+
+}
+
+
+/* =====================================
+   2. GLOBAL SETTINGS
+===================================== */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+
+}
+
+body {
+
+    font-family: "DM Sans", sans-serif;
+
+    background: var(--white);
+
+    color: var(--text);
+
+    transition:
+        background .3s ease,
+        color .3s ease;
+
+}
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+.container {
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+}
+
+section {
+
+    scroll-margin-top: 90px;
+
+}
+
+input[name="language"] {
+
+    display: none;
+
+}
+
+
+/* =====================================
+   3. LANGUAGE SYSTEM
+===================================== */
+
+.am {
+
+    display: none;
+
+}
+
+
+/* Amharic selection */
+
+#amharic:checked ~ * .en {
+
+    display: none !important;
+
+}
+
+#amharic:checked ~ * .am {
+
+    display: inline;
+
+}
+
+#amharic:checked ~ * h1.am,
+#amharic:checked ~ * h2.am,
+#amharic:checked ~ * h3.am,
+#amharic:checked ~ * p.am {
+
+    display: block;
+
+}
+
+
+/* English selection */
+
+#english:checked ~ * .en {
+
+    display: inline;
+
+}
+
+#english:checked ~ * h1.en,
+#english:checked ~ * h2.en,
+#english:checked ~ * h3.en,
+#english:checked ~ * p.en {
+
+    display: block;
+
+}
+
+
+/* Amharic font */
+
+#amharic:checked ~ * {
+
+    font-family: "Noto Sans Ethiopic", sans-serif;
+
+}
+
+
+/* =====================================
+   4. HEADER
+===================================== */
+
+.header {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    background: var(--white);
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+
+}
+
+.navbar {
+
+    height: 85px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+.logo-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    border: 2px solid var(--dark-green);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    color: var(--dark-green);
+
+}
+
+.logo-text h2 {
+
+    font-size: 18px;
+
+    color: var(--text);
+
+}
+
+.logo-text span {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--dark-green);
+
+    font-weight: bold;
+
+}
+
+
+/* NAVIGATION */
+
+.nav {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+}
+
+.nav > a {
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+
+}
+
+.nav > a:hover {
+
+    color: var(--dark-green);
+
+}
+
+
+/* LANGUAGE BUTTON */
+
+.language {
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 10px;
+
+    background: var(--light-bg);
+
+    border-radius: 5px;
+
+}
+
+.language label {
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: var(--dark-green);
+
+}
+
+#english:checked ~ .header .language label[for="english"],
+#amharic:checked ~ .header .language label[for="amharic"] {
+
+    text-decoration: underline;
+
+}
+
+
+/* PHONE BUTTON */
+
+.call-btn {
+
+    background: var(--green);
+
+    color: var(--deep-green);
+
+    padding: 13px 16px;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================
+   5. DARK / LIGHT MODE
+===================================== */
+
+#dark-mode {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* Theme button */
+
+.theme-toggle {
+
+    width: 48px;
+
+    height: 32px;
+
+    border-radius: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background: var(--light-bg);
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: var(--transition);
+
+}
+
+.theme-toggle:hover {
+
+    transform: scale(1.08);
+
+}
+
+.theme-toggle .sun {
+
+    color: #e8a526;
+
+}
+
+.theme-toggle .moon {
+
+    color: #506a9b;
+
+}
+
+
+/* Dark mode variables */
+
+body:has(#dark-mode:checked) {
+
+    --white: #18231c;
+
+    --light-bg: #202e24;
+
+    --text: #e8eee8;
+
+    --gray: #b3c0b5;
+
+    --border: #35483a;
+
+    --deep-green: #b7e58b;
+
+    background: #18231c;
+
+    color: #e8eee8;
+
+}
+
+
+/* Header dark mode */
+
+body:has(#dark-mode:checked) .header {
+
+    background: #18231c;
+
+    border-bottom: 1px solid #344638;
+
+}
+
+body:has(#dark-mode:checked) .logo-text h2 {
+
+    color: white;
+
+}
+
+body:has(#dark-mode:checked) .nav > a {
+
+    color: #e8eee8;
+
+}
+
+body:has(#dark-mode:checked) .nav > a:hover {
+
+    color: #a8db77;
+
+}
+
+
+/* Sections dark mode */
+
+body:has(#dark-mode:checked) .features,
+body:has(#dark-mode:checked) .about,
+body:has(#dark-mode:checked) .contact {
+
+    background: #18231c;
+
+}
+
+body:has(#dark-mode:checked) .services,
+body:has(#dark-mode:checked) .why {
+
+    background: #202e24;
+
+}
+
+
+/* Cards dark mode */
+
+body:has(#dark-mode:checked) .service-card,
+body:has(#dark-mode:checked) .why-card,
+body:has(#dark-mode:checked) .contact-box {
+
+    background: #29392e;
+
+    border: 1px solid #3b5140;
+
+}
+
+body:has(#dark-mode:checked) .service-card h3,
+body:has(#dark-mode:checked) .why-card h3,
+body:has(#dark-mode:checked) .contact-item h3 {
+
+    color: white;
+
+}
+
+
+/* Text dark mode */
+
+body:has(#dark-mode:checked) .section-heading h2,
+body:has(#dark-mode:checked) .about-content h2,
+body:has(#dark-mode:checked) .contact-content h2 {
+
+    color: white;
+
+}
+
+body:has(#dark-mode:checked) .section-heading p,
+body:has(#dark-mode:checked) .about-content p,
+body:has(#dark-mode:checked) .contact-content p,
+body:has(#dark-mode:checked) .service-card p,
+body:has(#dark-mode:checked) .contact-box p {
+
+    color: #bdc9bf;
+
+}
+
+
+/* Icons dark mode */
+
+body:has(#dark-mode:checked) .service-icon,
+body:has(#dark-mode:checked) .contact-item > span {
+
+    background: #354a39;
+
+}
+
+
+/* Language dark mode */
+
+body:has(#dark-mode:checked) .language,
+body:has(#dark-mode:checked) .theme-toggle {
+
+    background: #29392e;
+
+}
+
+body:has(#dark-mode:checked) .language label {
+
+    color: #a8db77;
+
+}
+
+
+/* Footer dark mode */
+
+body:has(#dark-mode:checked) .footer {
+
+    background: #101a13;
+
+}
+
+
+/* =====================================
+   6. MOBILE MENU
+===================================== */
+
+#menu-toggle {
+
+    display: none;
+
+}
+
+.menu-icon {
+
+    display: none;
+
+    font-size: 27px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================
+   7. HERO SECTION
+===================================== */
+
+.hero {
+
+    min-height: 650px;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    background-image: url(
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&auto=format&fit=crop"
+    );
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(15,31,19,.93),
+        rgba(15,31,19,.42)
+    );
+
+}
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+
+    padding: 80px 0;
+
+}
+
+.hero-tag {
+
+    color: #b9e88e;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    font-weight: bold;
+
+}
+
+.hero h1 {
+
+    font-size: clamp(40px, 6vw, 70px);
+
+    line-height: 1.2;
+
+    margin: 25px 0;
+
+    max-width: 800px;
+
+}
+
+.hero h1 span {
+
+    display: block;
+
+    color: #a8db77;
+
+}
+
+.hero p {
+
+    max-width: 580px;
+
+    line-height: 1.9;
+
+    margin-bottom: 30px;
+
+    color: #eeeeee;
+
+}
+
+
+/* HERO BUTTONS */
+
+.hero-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+.btn-primary {
+
+    background: var(--green);
+
+    color: #203d25;
+
+    padding: 15px 22px;
+
+    display: inline-block;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    transition: var(--transition);
+
+}
+
+.btn-primary:hover {
+
+    background: #a5d66e;
+
+    transform: translateY(-3px);
+
+}
+
+.btn-outline {
+
+    border: 1px solid white;
+
+    color: white;
+
+    padding: 15px 22px;
+
+    border-radius: 5px;
+
+    font-weight: bold;
+
+    transition: var(--transition);
+
+}
+
+.btn-outline:hover {
+
+    background: white;
+
+    color: #203d25;
+
+}
+
+
+/* =====================================
+   8. FEATURES
+===================================== */
+
+.features {
+
+    background: white;
+
+    padding: 35px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.feature-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    text-align: center;
+
+}
+
+.feature div {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+
+}
+
+.feature h3 {
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================
+   9. GENERAL SECTIONS
+===================================== */
+
+.section {
+
+    padding: 100px 0;
+
+}
+
+.section-tag {
+
+    color: var(--dark-green);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+}
+
+.section-heading {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-content h2 {
+
+    font-size: clamp(28px, 4vw, 42px);
+
+    margin: 18px 0;
+
+    line-height: 1.4;
+
+}
+
+.section-heading p,
+.about-content p,
+.contact-content p {
+
+    color: var(--gray);
+
+    line-height: 1.9;
+
+}
+
+
+/* =====================================
+   10. ABOUT
+===================================== */
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 65px;
+
+    align-items: center;
+
+}
+
+.about-image img {
+
+    width: 100%;
+
+    height: 440px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+}
+
+.about-content p {
+
+    margin-bottom: 20px;
+
+}
+
+.about-list {
+
+    margin: 25px 0;
+
+}
+
+.about-list p {
+
+    color: var(--dark-green);
+
+    font-weight: bold;
+
+    margin-bottom: 13px;
+
+}
+
+
+/* =====================================
+   11. SERVICES
+===================================== */
+
+.services {
+
+    background: var(--light-bg);
+
+}
+
+.service-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 22px;
+
+}
+
+.service-card {
+
+    background: white;
+
+    padding: 30px 23px;
+
+    border-radius: 8px;
+
+    border: 1px solid var(--border);
+
+    transition: var(--transition);
+
+}
+
+.service-card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: var(--shadow);
+
+}
+
+.service-icon {
+
+    width: 60px;
+
+    height: 60px;
+
+    background: var(--light-bg);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+
+}
+
+.service-card h3 {
+
+    font-size: 17px;
+
+    margin-bottom: 15px;
+
+}
+
+.service-card p {
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+
+}
+
+
+/* =====================================
+   12. PROJECTS
+===================================== */
+
+.project-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+}
+
+.project-card {
+
+    height: 330px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+
+}
+
+.project-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: .5s;
+
+}
+
+.project-card:hover img {
+
+    transform: scale(1.1);
+
+}
+
+.project-info {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 25px;
+
+    color: white;
+
+    background: linear-gradient(
+        transparent,
+        rgba(0,0,0,.85)
+    );
+
+}
+
+
+/* =====================================
+   13. WHY CHOOSE US
+===================================== */
+
+.why {
+
+    background: var(--light-bg);
+
+}
+
+.why-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 22px;
+
+}
+
+.why-card {
+
+    background: white;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+}
+
+.why-card div {
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+
+}
+
+.why-card h3 {
+
+    font-size: 16px;
+
+}
+
+
+/* =====================================
+   14. CONTACT
+===================================== */
+
+.contact-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 65px;
+
+    align-items: center;
+
+}
+
+.contact-item {
+
+    display: flex;
+
+    gap: 18px;
+
+    margin-top: 30px;
+
+    align-items: center;
+
+}
+
+.contact-item > span {
+
+    background: var(--light-bg);
+
+    padding: 15px;
+
+    color: var(--dark-green);
+
+    border-radius: 50%;
+
+    font-size: 22px;
+
+}
+
+.contact-item small {
+
+    color: var(--gray);
+
+}
+
+.contact-item h3 {
+
+    margin-top: 5px;
+
+}
+
+.contact-box {
+
+    background: var(--light-bg);
+
+    padding: 45px;
+
+    border-radius: 8px;
+
+}
+
+.contact-box h2 {
+
+    margin-bottom: 20px;
+
+}
+
+.contact-box p {
+
+    color: var(--gray);
+
+    line-height: 1.9;
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =====================================
+   15. FOOTER
+===================================== */
+
+.footer {
+
+    background: #192c1c;
+
+    color: white;
+
+    padding-top: 60px;
+
+}
+
+.footer-grid {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+
+}
+
+.footer-grid h3 {
+
+    margin-bottom: 18px;
+
+}
+
+.footer-grid p,
+.footer-grid a {
+
+    display: block;
+
+    color: #c4d1c2;
+
+    font-size: 14px;
+
+    margin-bottom: 13px;
+
+}
+
+.footer-grid a:hover {
+
+    color: var(--green);
+
+}
+
+.copyright {
+
+    text-align: center;
+
+    padding: 22px;
+
+    border-top: 1px solid #ffffff20;
+
+    color: #b8c6b5;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================
+   16. RESPONSIVE TABLET
+===================================== */
+
+@media (max-width: 1000px) {
+
+    .nav {
+
+        gap: 12px;
+
+    }
+
+    .service-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+/* =====================================
+   17. RESPONSIVE MOBILE
+===================================== */
+
+@media (max-width: 750px) {
+
+    .navbar {
+
+        height: 75px;
+
+    }
+
+
+    .menu-icon {
+
+        display: block;
+
+        color: var(--dark-green);
+
+    }
+
+
+    .nav {
+
+        display: none;
+
+        position: absolute;
+
+        top: 75px;
+
+        left: 0;
+
+        width: 100%;
+
+        background: var(--white);
+
+        padding: 25px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        box-shadow: var(--shadow);
+
+    }
+
+
+    #menu-toggle:checked ~ .nav {
+
+        display: flex;
+
+    }
+
+
+    .nav > a {
+
+        padding: 12px 0;
+
+    }
+
+
+    .theme-toggle {
+
+        width: 60px;
+
+    }
+
+
+    .hero {
+
+        min-height: 570px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .feature-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .about-grid,
+    .contact-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+    }
+
+
+    .about-image img {
+
+        height: 320px;
+
+    }
+
+
+    .service-grid,
+    .project-grid,
+    .why-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+
+    }
+
+
+    .section {
+
+        padding: 65px 0;
+
+    }
+
+
+    .contact-box {
+
+        padding: 30px;
+
+    }
+
+
+    body:has(#dark-mode:checked) .nav {
+
+        background: #18231c;
+
+    }
+
+}
+
+
+/* =====================================
+   18. SMALL MOBILE
+===================================== */
+
+@media (max-width: 400px) {
+
+    .logo-text h2 {
+
+        font-size: 15px;
+
+    }
+
+    .logo-icon {
+
+        width: 42px;
+
+        height: 42px;
+
+    }
+
+    .hero h1 {
+
+        font-size: 35px;
+
+    }
+
+}
+
+
+/* =====================================
+   19. REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+
+        animation: none !important;
+
+    }
+
+}
